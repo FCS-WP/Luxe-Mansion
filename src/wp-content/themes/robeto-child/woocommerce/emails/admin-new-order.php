@@ -66,8 +66,6 @@ do_action('woocommerce_email_header', $email_title, $email); ?>
 				<td style="text-align:left;"><?php
 												// Product name.
 												echo wp_kses_post(apply_filters('woocommerce_order_item_name', $item->get_name(), $item, false));
-
-												// Product SKU.
 												if ($is_enquiry_order && is_object($item->get_product()) && $item->get_product()->get_sku()) {
 													echo ' (#' . $item->get_product()->get_sku() . ')';
 												}

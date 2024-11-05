@@ -243,3 +243,283 @@ body.woocommerce-checkout {
 		margin-bottom: 20px;
 	}
 }
+
+.home-section-items {
+	h2 {
+		font-size: 40px !important;
+	}
+}
+.about-section-items {
+	h2 {
+		font-size: 43px !important;
+	}
+}
+.image-single-product {
+	ol {
+		li {
+			padding: 15px !important;
+		}
+	}
+}
+.form-contact {
+	.elementor-field-label {
+		font-weight: bolder !important;
+		font-size: 18px;
+		margin-bottom: 10px;
+		color: black !important;
+	}
+	input {
+		border: 0 !important;
+		border-radius: 15px !important;
+		margin-bottom: 10px;
+	}
+	textarea {
+		border: 0 !important;
+		border-radius: 15px !important;
+		padding-top: 10px !important;
+		margin-bottom: 10px;
+	}
+	button {
+		border-radius: 15px !important;
+	}
+}
+.sidebar-category-product {
+	#wc_category_accordion_widget-2 {
+		list-style: none !important;
+		.accordion-item {
+			a {
+				color: black;
+				cursor: pointer;
+				font-size: 18px;
+				font-weight: bolder;
+				&:hover {
+					color: #cc3366;
+				}
+			}
+			li {
+				a {
+					font-size: 16px !important;
+					font-weight: normal !important;
+				}
+			}
+			.accordion-icon {
+				&:hover {
+					color: #cc3366;
+				}
+				font-size: 20px;
+				margin-right: 5px;
+				cursor: pointer;
+			}
+		}
+		.accordion-header {
+			&:first-child {
+				border-bottom: 3px solid #cccccc;
+				margin-bottom: 10px;
+				padding-bottom: 5px;
+			}
+			&:hover {
+				a {
+					color: #cc3366;
+				}
+				.accordion-icon {
+					color: #cc3366;
+				}
+			}
+		}
+		.accordion-content {
+			ul {
+				padding-left: 0px;
+				list-style-position: inside;
+				li {
+					border-bottom: 1px solid #cccccc;
+				}
+			}
+		}
+	}
+}
+.infor-product-page {
+	button {
+		background: #55da69 !important;
+		color: black !important;
+		width: 100%;
+		padding: 15px !important;
+		border-radius: 30px !important;
+	}
+	th {
+		padding-left: 0px;
+		text-align: left;
+	}
+}
+#customer_details {
+	padding-bottom: 50px;
+}
+.checkout-button.button.alt.wc-forward {
+	background: #55da69 !important;
+	color: black !important;
+	border-radius: 30px !important;
+}
+#place_order {
+	background: #55da69 !important;
+	color: black !important;
+	border-radius: 30px !important;
+}
+.woocommerce-variation-price {
+	margin-bottom: 15px;
+}
+.name-category-in-loop {
+	padding: 11px 13px 11px 13px;
+	background-color: white;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	border-color: #858585;
+	border-radius: 99px 99px 99px 99px;
+	display: inline-block;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	span {
+		color: #1d1d1d;
+		font-weight: bolder;
+		text-transform: uppercase;
+	}
+}
+.loop-product-no-button {
+	.add_to_cart_button {
+		display: none !important;
+	}
+	.product_type_variable {
+		display: none !important;
+	}
+	img {
+		height: 360px !important;
+		-o-object-fit: cover;
+		object-fit: cover;
+		-webkit-box-shadow: rgba(0,0,0,0.16) 0px 1px 4px !important;
+		box-shadow: rgba(0,0,0,0.16) 0px 1px 4px !important;
+	}
+}
+.content-shoppage {
+	.widgettitle {
+		font-size: 24px;
+	}
+	.woocommerce-loop-product__title {
+		min-height: 55px;
+	}
+	.name-category-in-loop {
+		padding: 5px 10px;
+		span {
+			font-size: 14px;
+		}
+	}
+	.woocommerce-LoopProduct-link {
+		img {
+			height: 208px !important;
+			-o-object-fit: cover !important;
+			object-fit: cover !important;
+		}
+	}
+}
+
+.accordion-menu {
+	.accordion-item {
+		margin: 10px 0;
+		.accordion-header {
+			padding: 10px;
+			cursor: pointer;
+			background: #f7f7f7;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border: 1px solid #ddd;
+			a {
+				color: #040404;
+				text-decoration: none;
+			}
+		}
+		.accordion-content {
+			display: none;
+			margin: 10px 5px;
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0 0 0 15px;
+				li {
+					cursor: pointer;
+					a {
+						color: #040404;
+						text-decoration: none;
+						&::before {
+							display: none;
+						}
+					}
+				}
+				li.active {
+					a {
+						color: #6b9e69;
+					}
+				}
+			}
+		}
+		.sub-category {
+			.accordion-content {
+				margin-left: 20px;
+			}
+		}
+		.accordion-icon {
+			font-size: 18px;
+			margin-left: 10px;
+			cursor: pointer;
+		}
+	}
+	.accordion-item.active {
+		.accordion-content {
+			display: block;
+		}
+		.accordion-header {
+			a {
+				color: #6b9e69;
+			}
+		}
+		.sub-category.active {
+			.accordion-header {
+				a {
+					color: #6b9e69;
+				}
+			}
+			.sub-category.active {
+				.accordion-header {
+					a {
+						color: #6b9e69;
+					}
+				}
+			}
+			.sub-category {
+				.accordion-header {
+					a {
+						color: black;
+					}
+				}
+			}
+		}
+		.sub-category {
+			.accordion-header {
+				a {
+					color: black;
+					&:hover {
+						color: #6b9e69;
+					}
+				}
+			}
+		}
+	}
+}
+.accordion-content {
+	padding: 0 !important;
+}
+.accordion-header {
+	a {
+		&:before {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,245 @@
+
+.accordion-menu {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+.kitify.elementor-kitify-wooproduct-images {
+	.kitify-product-images.layout-type-5 {
+		.woocommerce-product-gallery__image {
+			a {
+				img {
+					object-fit: contain !important;
+				}
+			}
+		}
+	}
+}
+#enquiry-variable-button {
+	padding: 1rem 2rem 0.9375rem;
+}
+.elementor-add-to-cart {
+	display: flex;
+	align-items: center;
+}
+.single-product {
+	.product {
+		.cart {
+			.woocommerce-product-details__add-to-cart {
+				flex-wrap: nowrap;
+			}
+			.quantity {
+				width: auto;
+			}
+		}
+	}
+}
+.single_add_to_cart_button {
+	width: 190px;
+	padding: 1rem 2rem 0.9375rem;
+}
+.input-text.qty {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	width: 60px;
+}
+ul.products {
+	.product {
+		.product-item__badges {
+			.nova_new_product {
+				top: -15px;
+				left: -15px;
+			}
+		}
+	}
+}
+.name-category-in-loop {
+	padding: 5px 10px;
+	top: 10px;
+	left: 20px;
+	font-size: 55%;
+}
+.figure__object_fit {
+	img {
+		height: 300px;
+	}
+}
+.accordion-custom {
+	margin: 20px auto;
+}
+.accordion-button-custom {
+	img {
+		transform: translatey(-2px);
+	}
+	&:hover {
+		background: transparent !important;
+	}
+	&:focus {
+		background: transparent !important;
+	}
+	width: 100%;
+	font-size: 20px !important;
+	font-weight: 500 !important;
+	line-height: 1.5rem !important;
+	padding: 15px;
+	color: #777777 !important;
+	border: none;
+	outline: none;
+	background-color: #f7f7f7;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+	text-align: left;
+}
+.d-none {
+	display: none !important;
+}
+.d-block {
+	display: block !important;
+}
+.accordion-content-custom {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.5s ease-out;
+	padding: 0 15px;
+	background-color:white;
+	p {
+		margin: 0;
+		padding: 15px 0;
+		font-size: 18px !important;
+	}
+}
+.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+	max-height: 410px;
+	height: 410px;
+	object-fit: cover;
+}
+body.woocommerce-checkout {
+	.woocommerce {
+		table.woocommerce-checkout-review-order-table {
+			tr {
+				th {
+					background: transparent;
+				}
+			}
+		}
+	}
+}
+.mega-menu-main {
+	.sub-menu {
+		.menu-item {
+			.sub-menu {
+				margin-left: 20px;
+			}
+		}
+	}
+}
+.menu-item-has-children.menu-item-mega {
+	.sub-menu.mega-menu {
+		ul.mega-menu-main {
+			li.mega-sub-menu {
+				ul.sub-menu {
+					.menu-item-has-children {
+						a {
+							.kitify-nav-arrow {
+								display: block !important;
+								transform: rotate(0);
+								top: 2px;
+							}
+							display: flex;
+							align-items: center;
+						}
+						.sub-menu {
+							opacity: 0;
+							height: 0px;
+							overflow: hidden;
+							transition: opacity .4s ease-in, height .4s ease-in;
+							li {
+								a {
+									span {
+										white-space: normal;
+										line-height: 20px;
+									}
+									margin-right: 30px;
+								}
+							}
+						}
+					}
+					li.menu-item-has-children {
+						&:hover {
+							.sub-menu {
+								height: 230px;
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#novaapf-category-filter-2 {
+	display: none;
+}
+.product-item__badges {
+	display: none;
+}
+.sub-menu.mega-menu {
+	.sub-menu {
+		li {
+			&:hover {
+				.sub-menu {
+					max-height: 240px !important;
+					overflow-y: auto !important;
+					width: 100%;
+				}
+			}
+		}
+	}
+	>.sub-menu {
+		li {
+			a {
+				padding: 20px 0;
+			}
+		}
+	}
+}
+.site-canvas-menu.position-left {
+	.header-mobiles-primary-menu {
+		.is-drilldown {
+			ul {
+				li {
+					a {
+						text-transform: capitalize !important;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 920px) {
+	.woocommerce-variation-add-to-cart {
+		display: block !important;
+	}
+	.elementor-add-to-cart {
+		display: block !important;
+	}
+	.enquiry-button-single {
+		margin-top: 20px;
+	}
+	.enquiry-button-variable {
+		margin-top: 20px;
+	}
+	.enquiry-cart {
+		.enquiry-button-cart {
+			width: 140px;
+			height: 40px;
+		}
+	}
+	.group-icon-buttons {
+		margin: 10px;
+	}
+	.table-enquiry-page {
+		overflow-x: auto;
+		margin-bottom: 20px;
+	}
+}

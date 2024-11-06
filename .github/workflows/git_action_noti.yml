@@ -46,8 +46,8 @@ jobs:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
-          to: -1002034905977
-          token: 6611988217:AAERCNw3lNbdpABmMztQudQXBuPcp1jsKdk
+          to: ${{ secrets.TELEGRAM_GROUP_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
           format: html
           message: |
             💥 <i><b>Please check new commit</b></i> 💥:

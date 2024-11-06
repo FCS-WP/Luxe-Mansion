@@ -48,62 +48,102 @@ class WC_Category_Accordion_Widget extends WP_Widget
         return $instance;
     }
 
-    private function display_accordion_menu()
-    {
-        $shop_page_url = get_permalink(wc_get_page_id('shop'));
+		private function display_accordion_menu()
+		{
+			echo '<div class="accordion-menu woocommerce novaapf-ajax-term-filter1 widget widget_novaapf-category-filter1">';
+			$uncategorized_id = get_term_by('slug', 'uncategorized', 'product_cat')->term_id;
+			$args = array(
+				'taxonomy'     => 'product_cat',
+				'orderby'      => 'name',
+				'show_count'   => 0,
+				'pad_counts'   => 0,
+				'hierarchical' => 1,
+				'title_li'     => '',
+ 				'hide_empty'   => 0 ,
+				'exclude'      => $uncategorized_id 
+			);
 
-        echo '<div class="accordion-menu">';
-        echo '<div class="accordion-item all-categories">';
-        echo '<div class="accordion-header"><a href="' . esc_url($shop_page_url) . '">All Categories</a></div>';
-        echo '</div>';
+			$all_categories = get_categories($args);
 
-        $args = array(
-            'taxonomy'     => 'product_cat',
-            'orderby'      => 'name',
-            'show_count'   => 0,
-            'pad_counts'   => 0,
-            'hierarchical' => 1,
-            'title_li'     => ''
-        );
+			foreach ($all_categories as $cat) {
+				if ($cat->category_parent == 0) {
+					$category_id = $cat->term_id;
 
-        $all_categories = get_categories($args);
+					// Check if the category has subcategories
+					$has_children = get_categories(array(
+						'taxonomy' => 'product_cat',
+						'parent'   => $category_id
+					));
+					echo '<div class="novaapf-layered-nav1">';
+					echo '<ul>';
+					echo '<li class="accordion-item" data-category-id="' . $category_id . '">';
+					echo '<div class="accordion-header"><a href="' . get_term_link($cat->slug, 'product_cat') . '" data-key="product-cato" data-value="' . $category_id . '" data-multiple-filter>' . $cat->name . 					'</a>';
 
-        foreach ($all_categories as $cat) {
-            if ($cat->category_parent == 0) {
-                $category_id = $cat->term_id;
-                echo '<div class="accordion-item" data-category-id="' . $category_id . '">';
-                echo '<div class="accordion-header"><span class="accordion-icon">+</span><a href="' . get_term_link($cat->slug, 'product_cat') . '">' . $cat->name . '</a></div>';
-                echo '<div class="accordion-content">';
-                $this->display_subcategories($category_id);
-                echo '</div></div>';
-            }
-        }
-        echo '</div>';
-    }
+					// Show "+" only if the category has subcategories
+					if (!empty($has_children)) {
+						echo '<span class="accordion-icon">+</span>';
+					}
 
-    private function display_subcategories($parent_id)
-    {
-        $args = array(
-            'taxonomy'     => 'product_cat',
-            'child_of'     => $parent_id,
-            'parent'       => $parent_id,
-            'orderby'      => 'name',
-            'show_count'   => 0,
-            'pad_counts'   => 0,
-            'hierarchical' => 1,
-            'title_li'     => ''
-        );
+					echo '</div>';
 
-        $sub_cats = get_categories($args);
+					// Show subcategories if available
+					if (!empty($has_children)) {
+						echo '<div class="accordion-content novaapf-layered-nav1">';
+						$this->display_subcategories($category_id);
+						echo '</div>';
+					}
 
-        if ($sub_cats) {
-            echo '<ul>';
-            foreach ($sub_cats as $sub_category) {
-                echo '<li><a href="' . get_term_link($sub_category->slug, 'product_cat') . '" data-category-id="' . $sub_category->term_id . '">' . $sub_category->name . '</a></li>';
-            }
-            echo '</ul>';
-        }
-    }
+					echo '</li> </ul> </div>';
+				}
+			}
+			echo '</div>';
+		}
+
+
+	private function display_subcategories($parent_id)
+	{
+		$args = array(
+			'taxonomy'     => 'product_cat',
+			'child_of'     => $parent_id,
+			'parent'       => $parent_id,
+			'orderby'      => 'name',
+			'show_count'   => 0,
+			'pad_counts'   => 0,
+			'hierarchical' => 1,
+			'title_li'     => ''
+		);
+
+		$sub_cats = get_categories($args);
+
+		if ($sub_cats) {
+			echo '<ul class="accordion-menu menu-sub">';
+			foreach ($sub_cats as $sub_category) {
+				echo '<li class="sub-category accordion-item" data-category-id="' . $sub_category->term_id . '">';
+				echo '<div class="accordion-header"><a href="' . get_term_link($sub_category->slug, 'product_cat') . '" data-key="product-cata" data-value="' . $sub_category->term_id . '" data-multiple-filter>' . $sub_category->name . '</a>';
+
+				// Check if this subcategory has further subcategories
+				$has_children = get_categories(array(
+					'taxonomy' => 'product_cat',
+					'parent'   => $sub_category->term_id
+				));
+
+				// Show "+" icon only if there are subcategories
+				if (!empty($has_children)) {
+					echo '<span class="accordion-icon">+</span>';
+					echo '</div>';
+					echo '<div class="accordion-content">';
+					$this->display_subcategories($sub_category->term_id); 
+					echo '</div>';
+				} else {
+					echo '</div>'; 
+				}
+
+				echo '</li>';
+			}
+			echo '</ul>';
+		}
+	}
+
 }
 
 function register_wc_category_accordion_widget()
@@ -115,50 +155,60 @@ add_action('widgets_init', 'register_wc_category_accordion_widget');
 function wc_category_accordion_styles()
 {
     ?>
-    <script>
-        jQuery(document).ready(function($) {
-            $('.accordion-header').click(function() {
-                var accordionItem = $(this).parent('.accordion-item');
-                var icon = $(this).find('.accordion-icon');
-                var content = accordionItem.find('.accordion-content');
 
-                content.slideToggle();
+<script>
+jQuery(document).ready(function($) {
+    $('.accordion-header').on('click', function(e) {
+        if ($(e.target).is('a')) {
+            return; 
+        }
 
-                if (accordionItem.hasClass('active')) {
-                    icon.text('+');
-                } else {
-                    icon.text('-');
-                }
+        e.preventDefault();
 
-                accordionItem.toggleClass('active');
-                accordionItem.siblings().removeClass('active').find('.accordion-content').slideUp();
-                accordionItem.siblings().find('.accordion-icon').text('+');
-            });
+        var accordionItem = $(this).closest('.accordion-item');
+        var icon = $(this).find('.accordion-icon');
+        var content = accordionItem.children('.accordion-content:first'); 
 
-            var currentUrl = window.location.href;
 
-            $('.accordion-item').each(function() {
-                var categoryId = $(this).data('category-id');
-                var categoryLink = $(this).find('.accordion-header a').attr('href');
+        if (content.length > 0) {
+            content.slideToggle();
 
-                if (currentUrl === categoryLink) {
-                    $(this).addClass('active');
-                    $(this).find('.accordion-content').show();
-                    $(this).find('.accordion-icon').text('-');
-                }
+            if (accordionItem.hasClass('active')) {
+                icon.text('+');
+            } else {
+                icon.text('-');
+            }
 
-                $(this).find('li a').each(function() {
-                    var subCategoryLink = $(this).attr('href');
-                    if (currentUrl === subCategoryLink) {
-                        $(this).parent().addClass('active');
-                        $(this).closest('.accordion-item').addClass('active');
-                        $(this).closest('.accordion-content').show();
-                        $(this).closest('.accordion-item').find('.accordion-icon').text('-');
-                    }
-                });
-            });
-        });
-    </script>
+            accordionItem.toggleClass('active');
+
+            accordionItem.siblings().removeClass('active').find('.accordion-content').slideUp();
+            accordionItem.siblings().find('.accordion-icon').text('+');
+
+            accordionItem.find('.sub-category').removeClass('active').find('.accordion-content').slideUp();
+            accordionItem.find('.sub-category .accordion-icon').text('+');
+        }
+    });
+
+    var currentUrl = window.location.href;
+
+    $('.accordion-item').removeClass('active').find('.accordion-content').hide();
+    $('.accordion-item').find('.accordion-icon').text('+');
+
+    $('.accordion-item').each(function() {
+        var categoryLink = $(this).find('a').attr('href');
+
+        if (currentUrl === categoryLink) {
+            $(this).addClass('active');
+            $(this).find('.accordion-content').show(); 
+            $(this).find('.accordion-icon').text('-'); 
+
+            $(this).parents('.accordion-item').addClass('active').children('.accordion-content').show();
+            $(this).parents('.accordion-item').find('.accordion-icon:first').text('-');
+        }
+    });
+});
+</script>
+
 <?php
 }
 add_action('wp_head', 'wc_category_accordion_styles');

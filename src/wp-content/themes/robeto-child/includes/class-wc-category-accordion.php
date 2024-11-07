@@ -155,20 +155,17 @@ add_action('widgets_init', 'register_wc_category_accordion_widget');
 function wc_category_accordion_styles()
 {
     ?>
-
 <script>
 jQuery(document).ready(function($) {
     $('.accordion-header').on('click', function(e) {
         if ($(e.target).is('a')) {
-            return; 
+            return;
         }
-
         e.preventDefault();
 
         var accordionItem = $(this).closest('.accordion-item');
         var icon = $(this).find('.accordion-icon');
-        var content = accordionItem.children('.accordion-content:first'); 
-
+        var content = accordionItem.children('.accordion-content:first');
 
         if (content.length > 0) {
             content.slideToggle();
@@ -187,6 +184,15 @@ jQuery(document).ready(function($) {
             accordionItem.find('.sub-category').removeClass('active').find('.accordion-content').slideUp();
             accordionItem.find('.sub-category .accordion-icon').text('+');
         }
+
+        var currentUrl = window.location.href;
+        var categoryLink = accordionItem.find('a').attr('href');
+
+        if (currentUrl === categoryLink) {
+            accordionItem.addClass('active');
+            accordionItem.find('.accordion-content').show();
+            accordionItem.find('.accordion-icon').text('-');
+        }
     });
 
     var currentUrl = window.location.href;
@@ -198,17 +204,31 @@ jQuery(document).ready(function($) {
         var categoryLink = $(this).find('a').attr('href');
 
         if (currentUrl === categoryLink) {
-            $(this).addClass('active');
-            $(this).find('.accordion-content').show(); 
-            $(this).find('.accordion-icon').text('-'); 
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+                $(this).find('.accordion-content').show();
+                $(this).find('.accordion-icon').text('-');
+            }
 
             $(this).parents('.accordion-item').addClass('active').children('.accordion-content').show();
             $(this).parents('.accordion-item').find('.accordion-icon:first').text('-');
         }
     });
+
+    setInterval(function() {
+        $('.accordion-item').each(function() {
+            var categoryLink = $(this).find('a').attr('href');
+            var currentUrl = window.location.href;
+
+            if (currentUrl === categoryLink && !$(this).hasClass('active')) {
+                $(this).addClass('active');
+                $(this).find('.accordion-content').show();
+                $(this).find('.accordion-icon').text('-');
+            }
+        });
+    }, 1000);
 });
 </script>
-
 <?php
 }
 add_action('wp_head', 'wc_category_accordion_styles');

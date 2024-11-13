@@ -1,7 +1,4 @@
-.accordion-menu {
-  border-bottom: 0 !important;
-  padding-bottom: 0;
-}
+
 .kitify.elementor-kitify-wooproduct-images {
   .kitify-product-images.layout-type-5 {
     .woocommerce-product-gallery__image {
@@ -62,51 +59,14 @@ ul.products {
     height: 300px;
   }
 }
-.accordion-custom {
-  margin: 20px auto;
-}
-.accordion-button-custom {
-  img {
-    transform: translatey(-2px);
-  }
-  &:hover {
-    background: transparent !important;
-  }
-  &:focus {
-    background: transparent !important;
-  }
-  width: 100%;
-  font-size: 20px !important;
-  font-weight: 500 !important;
-  line-height: 1.5rem !important;
-  padding: 15px;
-  color: #777777 !important;
-  border: none;
-  outline: none;
-  background-color: #f7f7f7;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  text-align: left;
-}
+
 .d-none {
   display: none !important;
 }
 .d-block {
   display: block !important;
 }
-.accordion-content-custom {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-out;
-  padding: 0 15px;
-  background-color: white;
-  p {
-    margin: 0;
-    padding: 15px 0;
-    font-size: 18px !important;
-  }
-}
+
 .attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
   max-height: 410px;
   height: 410px;
@@ -298,61 +258,7 @@ body.woocommerce-checkout {
 .novaapf-before-products {
   z-index: unset !important;
 }
-.sidebar-category-product {
-  #wc_category_accordion_widget-2 {
-    border-bottom: 0 !important;
-    list-style: none !important;
-    .accordion-item {
-      a {
-        color: black;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: bolder;
-        &:hover {
-          color: #cc3366;
-        }
-      }
-      li {
-        a {
-          font-size: 16px !important;
-          font-weight: normal !important;
-        }
-      }
-      .accordion-icon {
-        &:hover {
-          color: #cc3366;
-        }
-        font-size: 20px;
-        margin-right: 5px;
-        cursor: pointer;
-      }
-    }
-    .accordion-header {
-      &:first-child {
-        border-bottom: 3px solid #cccccc;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-      }
-      &:hover {
-        a {
-          color: #cc3366;
-        }
-        .accordion-icon {
-          color: #cc3366;
-        }
-      }
-    }
-    .accordion-content {
-      ul {
-        padding-left: 0px;
-        list-style-position: inside;
-        li {
-          border-bottom: 1px solid #cccccc;
-        }
-      }
-    }
-  }
-}
+
 .infor-product-page {
   button {
     background: #55da69 !important;
@@ -431,109 +337,3 @@ body.woocommerce-checkout {
   }
 }
 
-.accordion-menu {
-  .accordion-item {
-    margin: 10px 0;
-    .accordion-header {
-      padding: 10px;
-      cursor: pointer;
-      background: #f7f7f7;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #ddd;
-      a {
-        color: #040404;
-        text-decoration: none;
-      }
-    }
-    .accordion-content {
-      display: none;
-      margin: 10px 5px;
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 0 15px;
-        li {
-          cursor: pointer;
-          a {
-            color: #040404;
-            text-decoration: none;
-            &::before {
-              display: none;
-            }
-          }
-        }
-        li.active {
-          a {
-            color: #6f4a32;
-          }
-        }
-      }
-    }
-    .sub-category {
-      .accordion-content {
-        margin-left: 20px;
-      }
-    }
-    .accordion-icon {
-      font-size: 18px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-  }
-  .accordion-item.active {
-    .accordion-content {
-      display: block;
-    }
-    .accordion-header {
-      a {
-        color: #6f4a32;
-      }
-    }
-    .sub-category.active {
-      .accordion-header {
-        a {
-          color: #6f4a32;
-        }
-      }
-      .sub-category.active {
-        .accordion-header {
-          a {
-            color: #6f4a32;
-          }
-        }
-      }
-      .sub-category {
-        .accordion-header {
-          a {
-            color: black;
-          }
-          &:hover {
-            color: #6f4a32;
-          }
-        }
-      }
-    }
-    .sub-category {
-      .accordion-header {
-        a {
-          color: black;
-          &:hover {
-            color: #6f4a32;
-          }
-        }
-      }
-    }
-  }
-}
-.accordion-content {
-  padding: 0 !important;
-}
-.accordion-header {
-  a {
-    &:before {
-      display: none;
-    }
-  }
-}

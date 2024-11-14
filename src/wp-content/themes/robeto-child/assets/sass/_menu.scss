@@ -1,0 +1,134 @@
+// Header UI
+.kitify-doc-enable-header-transparency
+  .kitify-site-wrapper
+  > .elementor-location-header {
+  z-index: 999;
+  background: #fff;
+}
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  pointer-events: auto;
+  background: #292929;
+  z-index: 900;
+}
+.kitify-nova-menu {
+  ul .menu-shop:hover {
+    .mega-menu {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+.kitify-nova-menu {
+  ul .menu-shop {
+    .mega-menu {
+      // width: 1440px !important;
+      visibility: hidden;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+  }
+}
+.main-navigation .mega-menu-container {
+  width: 1440px !important;
+}
+.kitify-nova-menu ul {
+  .menu-shop {
+    //Sub of Master Category
+    .mega-menu-main li {
+      flex-grow: 1;
+      //Sub Lv2
+      & > .sub-menu {
+        width: 100%;
+        display: block;
+        li.menu-item-has-children::before {
+          position: absolute;
+          content: "\ea10";
+          font: normal normal normal 1em / 1 NovaIcons;
+          right: 0px;
+          top: 10px;
+          width: 75px;
+          height: 25px;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          cursor: pointer;
+          transition: all 0.3s linear;
+        }
+      }
+
+      &.active {
+        & > a {
+          background: none;
+          color: #212121;
+        }
+        &.active::before {
+          content: "\ea13" !important;
+          color: #212121;
+        }
+      }
+      //Sub Lv3
+      & > .sub-menu .sub-menu {
+        margin-left: 10px;
+        min-height: 0;
+        max-height: 0px;
+        overflow: hidden;
+        transition: all 0.3s linear;
+      }
+      &.active > .sub-menu {
+        overflow-y: auto;
+        scrollbar-width: thin;
+        max-height: 500px;
+        min-height: 50px;
+      }
+    }
+  }
+}
+.kitify-nova-menu ul {
+  .menu-shop {
+    .mega-menu.sub-menu.active {
+      top: 100px;
+      left: 0;
+      transform: none !important ;
+      z-index: 990;
+      pointer-events: all;
+      opacity: 1 !important;
+      max-height: calc(100vh - 300px);
+      position: fixed;
+      width: 100%;
+      visibility: visible;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+}
+.header-close {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 150px;
+  right: 150px;
+  z-index: 9999;
+
+  &::after {
+    content: "\ea3a";
+    position: absolute;
+    font: normal normal normal 1em / 1 NovaIcons;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+}

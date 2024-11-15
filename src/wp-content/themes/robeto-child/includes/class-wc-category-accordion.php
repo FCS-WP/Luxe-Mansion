@@ -59,7 +59,7 @@ class WC_Category_Accordion_Widget extends WP_Widget
 				'pad_counts'   => 0,
 				'hierarchical' => 1,
 				'title_li'     => '',
- 				'hide_empty'   => 0 ,
+ 				'hide_empty'   => false ,
 				'exclude'      => $uncategorized_id 
 			);
 
@@ -202,31 +202,27 @@ jQuery(document).ready(function($) {
 
     $('.accordion-item').each(function() {
         var categoryLink = $(this).find('a').attr('href');
-
         if (currentUrl === categoryLink) {
-            if (!$(this).hasClass('active')) {
-                $(this).addClass('active');
-                $(this).find('.accordion-content').show();
-                $(this).find('.accordion-icon').text('-');
+            var item = $(this);
+
+            if (!item.hasClass('active')) {
+                item.addClass('active');
+                item.children('.accordion-content').show(); 
+                item.find('.accordion-icon').first().text('-');
             }
 
-            $(this).parents('.accordion-item').addClass('active').children('.accordion-content').show();
-            $(this).parents('.accordion-item').find('.accordion-icon:first').text('-');
+            item.parents('.accordion-item').each(function() {
+                var parent = $(this);
+                if (!parent.hasClass('active')) {
+                    parent.addClass('active');
+                    parent.children('.accordion-content').show();
+                    parent.find('.accordion-icon').first().text('-');
+                }
+            });
+
+            item.find('.accordion-content .accordion-icon').text('+');
         }
     });
-
-    setInterval(function() {
-        $('.accordion-item').each(function() {
-            var categoryLink = $(this).find('a').attr('href');
-            var currentUrl = window.location.href;
-
-            if (currentUrl === categoryLink && !$(this).hasClass('active')) {
-                $(this).addClass('active');
-                $(this).find('.accordion-content').show();
-                $(this).find('.accordion-icon').text('-');
-            }
-        });
-    }, 1000);
 });
 </script>
 <?php

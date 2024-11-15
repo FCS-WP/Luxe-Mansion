@@ -72,7 +72,8 @@ class WC_Category_Accordion_Widget extends WP_Widget
 					// Check if the category has subcategories
 					$has_children = get_categories(array(
 						'taxonomy' => 'product_cat',
-						'parent'   => $category_id
+						'parent'   => $category_id,
+                        'hide_empty'   => false ,
 					));
 					echo '<div class="novaapf-layered-nav1">';
 					echo '<ul>';
@@ -110,6 +111,7 @@ class WC_Category_Accordion_Widget extends WP_Widget
 			'show_count'   => 0,
 			'pad_counts'   => 0,
 			'hierarchical' => 1,
+            'hide_empty'   => false ,
 			'title_li'     => ''
 		);
 
@@ -124,7 +126,8 @@ class WC_Category_Accordion_Widget extends WP_Widget
 				// Check if this subcategory has further subcategories
 				$has_children = get_categories(array(
 					'taxonomy' => 'product_cat',
-					'parent'   => $sub_category->term_id
+					'parent'   => $sub_category->term_id,
+                    'hide_empty'   => false ,
 				));
 
 				// Show "+" icon only if there are subcategories

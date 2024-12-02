@@ -1,8 +1,10 @@
 $(document).ready(function () {
-  handlerOpenMasterCate();
-  handlerSubLv1();
-  closeMenuByOverlay();
-  closeMenuByClose();
+  if (!isMobile()) {
+    handlerOpenMasterCate();
+    handlerSubLv1();
+    closeMenuByOverlay();
+    closeMenuByClose();
+  }
 });
 
 const $html = $("html");
@@ -10,6 +12,11 @@ const $menuShop = $(".menu-shop");
 const $megaMenu = $menuShop.children(".mega-menu");
 const $headerOverlay = $(".header-overlay");
 const $headerClose = $(".header-close");
+
+function isMobile() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return /iphone|ipod|android|windows phone|blackberry|mobile/i.test(userAgent);
+}
 
 function toggleBodyOverflow(isOpen) {
   if (isOpen) {

@@ -1,6 +1,5 @@
 .accordion-menu {
   .accordion-item {
-    margin: 10px 0;
     .accordion-header {
       padding: 10px;
       cursor: pointer;
@@ -49,45 +48,80 @@
       cursor: pointer;
     }
   }
-  .accordion-item.active {
+  .accordion-item {
     .accordion-content {
       display: block;
     }
     .accordion-header {
       a {
-        color: #6f4a32;
+        color: black;
+      }
+      &:hover {
+        a {
+          color: #6f4a32;
+        }
       }
     }
-    .sub-category.active {
+    &.active {
       .accordion-header {
         a {
           color: #6f4a32;
         }
       }
-      .sub-category.active {
-        .accordion-header {
-          a {
-            color: #6f4a32;
-          }
-        }
-      }
-      .sub-category {
+      .sub-category.accordion-item {
         .accordion-header {
           a {
             color: black;
           }
           &:hover {
-            color: #6f4a32;
+            a {
+              color: #6f4a32;
+            }
           }
         }
-      }
-    }
-    .sub-category {
-      .accordion-header {
-        a {
-          color: black;
-          &:hover {
-            color: #6f4a32;
+        &.active {
+          .accordion-header {
+            a {
+              color: #6f4a32;
+            }
+          }
+          .sub-category.accordion-item{
+            .accordion-header{
+              a{
+                color: black;
+              }
+              &:hover {
+                a {
+                  color: #6f4a32;
+                }
+              }
+            }
+            &.active{
+              .accordion-header{
+                a{
+                  color: #6f4a32;
+                }
+              }
+              .sub-category.accordion-item{
+                .accordion-header{
+                  a{
+                    color: black;
+                  }
+                  &:hover {
+                    a {
+                      color: #6f4a32;
+                    }
+                  }
+                }
+                &.active{
+                  .accordion-header{
+                    a{
+                      color: #6f4a32;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

@@ -5,6 +5,20 @@ $(document).ready(function () {
     closeMenuByOverlay();
     closeMenuByClose();
   }
+  let termBtn = $('.term-toggle-btn');
+  if (termBtn) {
+    termBtn.on('click', function(){
+      $('.term-collapse').slideToggle();
+      let collapseIcon = $('.toggle-icon');
+      if (collapseIcon.hasClass('open')) {
+        collapseIcon.html('&#8854;')
+        collapseIcon.removeClass('open');
+      } else {
+        collapseIcon.html('&#8853;')
+        collapseIcon.addClass('open');
+      }
+    })
+  }
 });
 
 document.addEventListener("contextmenu", (event) => event.preventDefault());

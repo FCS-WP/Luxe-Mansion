@@ -1,0 +1,43 @@
+.term-collapse {
+    margin-top: 10px;
+    ol, ul {
+        margin-bottom: 0;
+        li {
+            font-size: 14px;
+        }
+    }
+}
+.term-toggle-btn {
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+.toggle-icon {
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+}
+.custom-checkout-message {
+    padding: 15px;
+    padding: 15px; 
+    background: #FFFFFF; 
+    border: 1px solid #ddd; 
+    margin: 20px 0;
+}
+.woocommerce-message {
+    align-items: center;
+}
+.custom-promo-message {
+    padding: 20px; 
+    background: #FBF6F2; 
+    text-align: center; 
+    font-size: 16px; 
+    margin-bottom: 20px; 
+}
+.promo-message {
+    p {
+        margin-bottom: 0;
+        color: #333;
+    }
+}

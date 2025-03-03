@@ -28,3 +28,16 @@
 .woocommerce-message {
     align-items: center;
 }
+.custom-promo-message {
+    padding: 20px; 
+    background: #FBF6F2; 
+    text-align: center; 
+    font-size: 16px; 
+    margin-bottom: 20px; 
+}
+.promo-message {
+    p {
+        margin-bottom: 0;
+        color: #333;
+    }
+}
